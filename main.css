@@ -1,19 +1,32 @@
 body{
     background-color: #E9EEF4;
+    font-family: Arial;
 }
 main{
     background-color: #E9EEF4;
     margin-top: 200px;
+    font-family: Arial;
 }
 header{
     background-color: #E9EEF4;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
     position: fixed;
-    top: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
     width: 100%;
     z-index: 100;
 }
 
+.container{
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+}
 header ul {
     display: flex;
     justify-content: center;
@@ -30,8 +43,17 @@ header li {
     list-style-type: none;
     padding: 20px;
 }
+
+footer{
+    font-family: Arial;
+    font-size: 40px;
+    float: right;
+    color: #333340;
+    height: 100px;
+    padding: 90px;
+}
 p{
-    font-family: 'grotesk';
+    font-family: Arial;
     font-size: 30px;
     text-align: left;
     margin-left: 150px;
@@ -40,11 +62,9 @@ p{
 
 a{
     color: #343440;
-    font-family: 'grotesk';
+    font-family: Arial;
     font-size: 20px;
     text-decoration: none;
-
-
 }
 a:hover{
     color: #009A44;
@@ -52,6 +72,15 @@ a:hover{
 a:visited{
     color: #9c9c9c;
 }
+
+a:visited:active {
+    color: #343440;
+}
+a:visited:active:hover{
+    color: #009A44;
+
+}
+
 
 blockquote{
     border: 2px solid white;
@@ -102,17 +131,14 @@ blockquote{
     font-size: 30px;
 }
 
-h1{
-    color: #343440;
-    font-family: 'grotesk';
-    font-size: 90px;
-    text-align: left;
-    margin-left: 150px;
+.news-title{
+    cursor: pointer;
+    color: #333340;
 }
-h2{
-    color: #343440;
-    font-family: 'grotesk';
-    font-size: 70px;
-    text-align: left;
-    margin-left: 150px;
+.newsСontent {
+    color: #333340;
 }
+.news-title:hover{
+    text-decoration: underline;
+}
+  
