@@ -15,7 +15,7 @@
             .then(data => { 
                 const currencyRates = document.getElementById('currency-rates'); 
                 const huf = data.Valute.HUF; 
-                currencyRates.innerHTML = "Курс венгерского форинта на сегодня: 1 HUF =` ${huf.Value.toFixed(2)} RUB`"; 
+                currencyRates.innerHTML = `Курс венгерского форинта на сегодня: 1 HUF = ${huf.Value.toFixed(2)} RUB`; 
                 currencyRates.style.textAlign = 'center'; 
                 currencyRates.style.fontSize = '30px'; 
                 currencyRates.style.margin = '20px'; 
