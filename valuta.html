@@ -1,113 +1,113 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Курс валют</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="icon" href="favicon.ico">
-    <link rel="shortcut icon" href="favicon 32x32.ico">
-    <link rel="shortcut icon" href="favicon 16x16.ico">
-    <script>
-        window.onload = function () {
-            fetch('https://www.cbr-xml-daily.ru/daily_json.js')
-            .then(response => response.json())
-            .then(data => {
-                const currencyRates = document.getElementById('currency-rates');
-                const huf = data.Valute.HUF;
-                currencyRates.innerHTML = `Курс венгерского форинта на сегодня: 1 HUF = ${huf.Value.toFixed(2)} RUB`;
-                currencyRates.style.textAlign = 'center';
-                currencyRates.style.fontSize = '30px';
-                currencyRates.style.margin = '20px';
-            })
-            .catch(error => console.error('Ошибка при загрузке курса: ', error));
-        const amountInput = document.getElementById('amount');
-        const fromCurrencySelect = document.getElementById('from-currency');
-        const toCurrencySelect = document.getElementById('to-currency');
-        const resultInput = document.getElementById('result');
-        const convertBtn = document.getElementById('convert-btn');
-
-        convertBtn.addEventListener('click', convertCurrency);
-
-        function convertCurrency() {
-            const amount = parseFloat(amountInput.value);
-            const fromCurrency = fromCurrencySelect.value;
-            const toCurrency = toCurrencySelect.value;
-
-            if (isNaN(amount) || amount <= 0) {
-                resultInput.value = 'Вы не ввели сумму';
-                return;
-            }
-
-            const convertedAmount = fx.convert(amount, fromCurrency, toCurrency);
-            resultInput.value = result.toFixed(2);
-        }
-    }
-</script>
-    <style>
-        img {
-            width: 100px;
-            height: 110px;
-            margin-left: 50px;
-            margin-top: 20px;
-        }
-        input{
-            height: 30px;
-            width: 500px;
-            margin: 20px;
-            border-radius: 5px;
-
-        }
-        .curs{
-            border: 2px solid #009A44;
-            border-radius: 5px;
-            margin-left: 200px;
-            margin-right: 200px;
-
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <img src="r_pharm.png">
-                <ul>
-                    <li><a href="company.html">О компании</a></li>
-                    <li><a href="news.html">Новости</a></li>
-                    <li><a href="valuta.html">Курс валют</a></li>
-                    <li><a href="contact.html">Контактные данные</a></li>
-                    <li><a href="video.html">Видео</a></li>
-                </ul>
-        </div>
-    </header>
-    <main>
-        <h1 style="text-align: center; font-size: 70px;">Курс валют</h1>
-        <div class="curs">
-            <h2 style="text-align: center; font-size: 60px;">Калькулятор валют</h2>
-            <div id="currency-rates"></div>
-            <div class="converter" style="text-align: center; ">
-                <div class="vvod">
-                    <input type="number" id="amount" placeholder="Введите сумму" />
-                    <select id="from-currency">
-                        <option value="RUB">RUB</option>
-                        <option value="HUF">HUF</option>
-                    </select>
-                </div>
-                <button id="convert-btn">Перевести</button>
-                <div class="vvod">
-                    <input type="text" id="result" placeholder="Результат" disabled />
-                    <select id="to-currency">
-                        <option value="RUB">RUB</option>
-                        <option value="HUF">HUF</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-    </main>
-    <footer>
-        +7 495 956 79 37
-        <br>info@rpharm.ru
-    </footer>    
-</body>
-</html>
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Курс валют</title> 
+    <link rel="stylesheet" href="main.css"> 
+    <link rel="icon" href="favicon.ico"> 
+    <link rel="shortcut icon" href="favicon 32x32.ico"> 
+    <link rel="shortcut icon" href="favicon 16x16.ico"> 
+    <script> 
+        window.onload = function () { 
+            fetch('https://www.cbr-xml-daily.ru/daily_json.js') 
+            .then(response => response.json()) 
+            .then(data => { 
+                const currencyRates = document.getElementById('currency-rates'); 
+                const huf = data.Valute.HUF; 
+                currencyRates.innerHTML = "Курс венгерского форинта на сегодня: 1 HUF =` ${huf.Value.toFixed(2)} RUB`"; 
+                currencyRates.style.textAlign = 'center'; 
+                currencyRates.style.fontSize = '30px'; 
+                currencyRates.style.margin = '20px'; 
+            }) 
+             
+            .catch(error => console.error('Ошибка при загрузке курса: ', error)); 
+            let fromRuble = document.getElementById('input-from-ruble'); 
+            let toHUF = document.getElementById('input-to-huf'); 
+            let fromHUF = document.getElementById('input-from-huf'); 
+            let toRuble = document.getElementById('input-to-ruble'); 
+             
+            
+            document.getElementById('convert-btn').addEventListener('click', function() { 
+                const fromRubleValue = document.getElementById('input-from-ruble').value; 
+                const toHUFValue = fx(fromRubleValue).from("RUB").to("HUF"); 
+                document.getElementById('input-to-huf').value = toHUFValue; 
+            }) 
+ 
+     
+ 
+            document.getElementById('convert-btn').addEventListener('click', function() { 
+                const fromHUFValue = document.getElementById('input-from-huf').value; 
+                const toRubleValue = fx(fromHUFValue).from("HUF").to("RUB"); 
+                document.getElementById('input-to-ruble').value = toRubleValue; 
+            }) 
+        } 
+</script> 
+    <style> 
+        img { 
+            width: 100px; 
+            height: 110px; 
+            margin-left: 50px; 
+            margin-top: 20px; 
+        } 
+        input{ 
+            height: 30px; 
+            width: 500px; 
+            margin: 20px; 
+            border-radius: 5px; 
+ 
+        } 
+        .curs{ 
+            border: 2px solid #009A44; 
+            border-radius: 5px; 
+            margin-left: 200px; 
+            margin-right: 200px; 
+ 
+        } 
+    </style> 
+</head> 
+<body> 
+    <header> 
+        <div class="container"> 
+            <img src="r_pharm.png"> 
+                <ul> 
+                    <li><a href="company.html">О компании</a></li> 
+                    <li><a href="news.html">Новости</a></li> 
+                    <li><a href="valuta.html">Курс валют</a></li> 
+                    <li><a href="contact.html">Контактные данные</a></li> 
+                    <li><a href="video.html">Видео</a></li> 
+                </ul> 
+        </div> 
+    </header> 
+    <main> 
+        <h1 style="text-align: center; font-size: 70px;">Курс валют</h1> 
+        <div class="curs"> 
+            <h2 style="text-align: center; font-size: 60px;">Калькулятор валют</h2> 
+            <div id="currency-rates"></div> 
+            <div class="converter" style="text-align: center;"> 
+              <div class="vvod"> 
+                <input type="number" id="input-from-ruble" placeholder="Введите сумму" /> 
+                <select id="from-currency"> 
+                  <option value="RUB">RUB</option> 
+                  <option value="HUF">HUF</option> 
+                </select> 
+              </div> 
+              <button id="convert-btn" class="convert-btn">Перевод</button> 
+              <div class="vvod"> 
+                <input type="text" id="input-to-huf" placeholder="Результат" disabled /> 
+                <select id="to-currency"> 
+                  <option value="RUB">HUF</option>
+                  <option value="HUF">RUB</option> 
+                </select> 
+              </div> 
+            </div> 
+          </div> 
+        </main> 
+        <footer> 
+            +7 495 956 79 37 
+            <br>info@rpharm.ru 
+        </footer>     
+ 
+        <script src="https://www.cbr-xml-daily.ru/money.js"></script> 
+    </body> 
+    </html>
